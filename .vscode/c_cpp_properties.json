@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk/System/Library/Frameworks"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/clang++",  // macOS default compiler (supports C++11+)
+            "cStandard": "c11",
+            "cppStandard": "c++11",              // Enable C++11 standard
+            "intelliSenseMode": "macos-clang-arm64" // IntelliSense mode for M1 chip
+        }
+    ],
+    "version": 4
+}
