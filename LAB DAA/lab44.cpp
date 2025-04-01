@@ -152,6 +152,34 @@ public:
         temp->right = LL_rotation(temp->right);
         return RR_rotation(temp);
     }
+
+    void search(string key)
+    {
+        node *temp = root;
+        int count = 0; 
+
+        while (temp != NULL)
+        {
+            count++;
+            if (key == temp->word)
+            {
+                cout << "Word found" << endl;
+                cout << "Number of comparisons: " << count << endl;
+                return;
+            }
+            else if (key < temp->word)
+            {
+                temp = temp->left;
+            }
+            else
+            {
+                temp = temp->right;
+            }
+        }
+
+        cout << "Word not found!" << endl;
+        cout << "Number of comparisons: " << count << endl;
+    }
 };
 
 int main()
@@ -159,5 +187,11 @@ int main()
     avl a;
     a.create();
     a.display();
+
+    string key;
+    cout << "Enter the word for searching ->  ";
+    cin >> key;
+    a.search(key);
+
     return 0;
 }
