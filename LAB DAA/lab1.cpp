@@ -46,6 +46,7 @@ public:
 
 void Records::accept()
 {
+    cout<<endl;
     cout << "Enter Mobile Number , Name and Bill Amount " << endl;
     cout<<endl;
     cout << "Enter ones's data in one line giving some space "<<endl;
