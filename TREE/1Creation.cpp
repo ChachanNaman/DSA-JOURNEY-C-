@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+
 class node
 {
 public:
@@ -15,24 +16,28 @@ public:
     }
 };
 
-node *create(node *root)
+node *buildtree(node *root)
 {
-    cout << "enter the data " << endl;
+    cout << "Enter the data : " << endl;
     int data;
     cin >> data;
-    root = new node(data);
-    if(data == -1){
+    root = new node(data); // calling constructor here where d=data and left right set to null automatcially
+
+    if (data == -1)
+    {
         return NULL;
     }
-    cout<<"enter the left data of "<<data<<endl;
-    root->left = create(root->left);
-    cout<<"enter the right data of "<<data<<endl;
-    root->right = create(root->right);
+
+    cout << "Enter the data for inserting in left of " << data << endl;
+    root->left = buildtree(root->left);
+    cout << "Enter the data for inserting in right of " << data << endl;
+    root->right = buildtree(root->right);
+
     return root;
 }
-
 int main()
 {
     node *root = NULL;
-    root = create(root);
+    root = buildtree(root);
+    return 0;
 }
