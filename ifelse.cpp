@@ -4,7 +4,7 @@
     int main()
     {
         int a;
-        // char n ;
+        char n ;
         // do
         // {
         // cout << "enter the digit : " << endl;
