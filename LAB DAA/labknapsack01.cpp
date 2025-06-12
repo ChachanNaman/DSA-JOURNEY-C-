@@ -1,37 +1,39 @@
 #include <iostream>
-#include <vector>
 using namespace std;
-
-
-int knapsack(int W, vector<int> &wt, vector<int> &val, int n) {
-   vector<vector<int> > dp(n + 1, vector<int>(W + 1, 0));
-
-    for (int i = 1; i <= n; i++) {
-        for (int w = 0; w <= W; w++) {
-            if (wt[i - 1] <= w){
-                dp[i][w] = max(dp[i - 1][w], val[i - 1] + dp[i - 1][w - wt[i - 1]]);
-            }
-            else{
-                dp[i][w] = dp[i - 1][w];
+int knapsack(int n , int W  , int weights[] , int profits[]){
+        int dp[n+1][W+1];
+        for(int i = 0; i<=n; i++){
+            for(int j = 0; j<=W ; j++){
+                if(i==0 || j==0){
+                    dp[i][j]=0;
+                }
+                else if(weights[i-1]<=j){
+                    dp[i][j]=max(dp[i-1][j], dp[i-1][j-weights[i-1]]+ profits[i-1]);
+                }
+                else{
+                    dp[i][j]= dp[i-1][j];
+                }
             }
         }
-    }
-    return dp[n][W];
-}
+        return dp[n][W];
 
-int main() {
-    int n, W;
-    cout << "Number of items: ";
-    cin >> n;
-    
-    vector<int> wt(n), val(n);
-    cout << "Enter weight and value of each item:\n";
-    for (int i = 0; i < n; i++)
-        cin >> wt[i] >> val[i];
-    
-    cout << "Enter knapsack capacity: ";
-    cin >> W;
-    
-    cout << "Max value: " << knapsack(W, wt, val, n) << endl;
-    return 0;
+}
+int main(){
+    int n , W;
+    cout<<"enter number of items : ";
+    cin>>n;
+    cout<<endl;
+    cout<<"enter max weight capacity : ";
+    cin>>W;
+
+    int weights[n], profits[n];
+    for(int i = 0; i<n;i++){
+        cout<<"enter weight of object "<<i+1<<" : ";
+        cin>>weights[i];
+        cout<<"enter profit of object "<<i+1<<" : ";
+        cin>>profits[i];
+    }
+    cout<<"Max Profit is : "<<knapsack(n ,W, weights , profits)<<endl;
+
+return 0;
 }
