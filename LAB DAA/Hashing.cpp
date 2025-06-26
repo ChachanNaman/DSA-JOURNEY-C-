@@ -2,7 +2,7 @@
 #include <cstring>
 #include <cstdio> 
 using namespace std;
-
+//hello 
 const int SIZE = 10;
 
 class Record {
