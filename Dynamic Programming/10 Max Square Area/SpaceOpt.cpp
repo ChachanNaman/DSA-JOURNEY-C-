@@ -6,41 +6,47 @@
 
 // User function Template for C++
 
-class Solution {
-  public:
-    
-    int solveSC(vector<vector<int>>& mat, int& maxi){
-        //from bottom to up now
+class Solution
+{
+public:
+    int solveSC(vector<vector<int>> &mat, int &maxi)
+    {
+        // from bottom to up now
         int row = mat.size();
         int col = mat[0].size();
-        
-        //creating 2d array for both curr and next
-        vector<int> curr(col+1,0);
-        vector<int> next(col+1,0);
-        
-        for(int i = row-1 ; i>=0 ; i--){
-            for(int j = col -1 ; j>=0 ; j--){
-                    int right = curr[j+1];
-                    int diagonal = next[j+1];
-                    int down = next[j];
-                    
-                    //wherever ans -> make it dp[i][j]
-                    if(mat[i][j]==1){
-                        curr[j] = 1+min(right, min(diagonal , down));
-                        maxi = max(maxi , curr[j]);
-                    }
-                    else{
-                        curr[j]=0;
-                    }
+
+        // creating 2d array for both curr and next
+        vector<int> curr(col + 1, 0);
+        vector<int> next(col + 1, 0);
+
+        for (int i = row - 1; i >= 0; i--)
+        {
+            for (int j = col - 1; j >= 0; j--)
+            {
+                int right = curr[j + 1];
+                int diagonal = next[j + 1];
+                int down = next[j];
+
+                // wherever ans -> make it dp[i][j]
+                if (mat[i][j] == 1)
+                {
+                    curr[j] = 1 + min(right, min(diagonal, down));
+                    maxi = max(maxi, curr[j]);
+                }
+                else
+                {
+                    curr[j] = 0;
+                }
             }
-            next = curr; //shifting
+            next = curr; // shifting
         }
-        return next[0];  //return next , coz curr is next now at the end
+        return next[0]; // return next , coz curr is next now at the end
     }
-    
-    int maxSquare(vector<vector<int>>& mat) {
+
+    int maxSquare(vector<vector<int>> &mat)
+    {
         int maxi = 0;
-        solveSC(mat , maxi);
+        solveSC(mat, maxi);
         return maxi;
     }
 };
