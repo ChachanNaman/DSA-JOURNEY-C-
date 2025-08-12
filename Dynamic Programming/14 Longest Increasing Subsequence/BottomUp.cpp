@@ -21,6 +21,7 @@ class Solution {
     }
     int lis(vector<int>& arr) {
         // code here     
+        int n = arr.size();
         //curr =  0 ->n-1   -> n elements
         // //prev = -1 -> n-1  -> n+1 elements
         
