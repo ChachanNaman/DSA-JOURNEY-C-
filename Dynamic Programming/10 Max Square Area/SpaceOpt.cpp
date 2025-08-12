@@ -4,8 +4,6 @@
 // curr row and next row -> 2d array of both
 // soo dp[i]->curr row & dp[i+1]->next row
 
-// User function Template for C++
-
 class Solution
 {
 public:

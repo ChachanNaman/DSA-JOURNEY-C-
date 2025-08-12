@@ -22,6 +22,11 @@
         "unordered_set": "cpp",
         "any": "cpp",
         "ranges": "cpp",
-        "stacktrace": "cpp"
+        "stacktrace": "cpp",
+        "limits": "cpp",
+        "valarray": "cpp",
+        "algorithm": "cpp",
+        "chrono": "cpp",
+        "random": "cpp"
     }
 }
